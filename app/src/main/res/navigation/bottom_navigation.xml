@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.themarketer.ui.Profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_myShoppingCartFragment"
+            app:destination="@id/myShoppingCartFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_wishlistFragment"
+            app:destination="@id/wishlistFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editFavoritesFragment"
+            app:destination="@id/editFavoritesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myStatusFragment"
+            app:destination="@id/myStatusFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.example.themarketer.ui.Notifications.NotificationsFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.themarketer.ui.Menu.MenuSections.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_topMarketersDetailsFragment"
+            app:destination="@id/topMarketersDetailsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_popularBrandsDetailsFragment"
+            app:destination="@id/popularBrandsDetailsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_topMarketerFragment"
+            app:destination="@id/topMarketersFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_popularBrandsFragment"
+            app:destination="@id/popularBrandsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.example.themarketer.ui.WishList.WishListFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_wish_list" >
+        <action
+            android:id="@+id/action_wishlistFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.themarketer.ui.EditProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.example.themarketer.ui.SearchResult.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" />
+    <fragment
+        android:id="@+id/topMarketersDetailsFragment"
+        android:name="com.example.themarketer.ui.TopMarketersDetails.TopMarketersDetailsFragment"
+        android:label="fragment_top_marketers_details"
+        tools:layout="@layout/fragment_top_marketers_details" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.themarketer.ui.ProductDetails.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_myShoppingCartFragment"
+            app:destination="@id/myShoppingCartFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_reviewsFragment"
+            app:destination="@id/reviewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myShoppingCartFragment"
+        android:name="com.example.themarketer.ui.MyShoppingCart.MyShoppingCartFragment"
+        android:label="fragment_my_shopping_cart"
+        tools:layout="@layout/fragment_my_shopping_cart" >
+        <action
+            android:id="@+id/action_myShoppingCartFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.themarketer.ui.TopMarketersDetails.Products.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
+    <fragment
+        android:id="@+id/fullDayOfferFragment"
+        android:name="com.example.themarketer.ui.TopMarketersDetails.FullDayOffer.FullDayOfferFragment"
+        android:label="fragment_full_day_offer"
+        tools:layout="@layout/fragment_full_day_offer" />
+    <fragment
+        android:id="@+id/popularBrandsDetailsFragment"
+        android:name="com.example.themarketer.ui.PopularBrandsDetails.PopularBrandsDetailsFragment"
+        android:label="fragment_popular_brands_details"
+        tools:layout="@layout/fragment_popular_brands_details" />
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.example.themarketer.ui.Reviews.ReviewsFragment"
+        android:label="fragment_reviews"
+        tools:layout="@layout/fragment_reviews" />
+    <fragment
+        android:id="@+id/topMarketersFragment"
+        android:name="com.example.themarketer.ui.TopMarketers.TopMarketersFragment"
+        android:label="fragment_top_marketer"
+        tools:layout="@layout/fragment_top_marketers" >
+        <action
+            android:id="@+id/action_topMarketerFragment_to_topMarketersDetailsFragment"
+            app:destination="@id/topMarketersDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFavoritesFragment"
+        android:name="com.example.themarketer.ui.EditFavorites.EditFavoritesFragment"
+        android:label="fragment_edit_favorites"
+        tools:layout="@layout/fragment_edit_favorites" />
+    <fragment
+        android:id="@+id/myStatusFragment"
+        android:name="com.example.themarketer.ui.MyStatus.MyStatusFragment"
+        android:label="fragment_my_status"
+        tools:layout="@layout/fragment_my_status" />
+    <fragment
+        android:id="@+id/popularBrandsFragment"
+        android:name="com.example.themarketer.ui.PopularBrands.PopularBrandsFragment"
+        android:label="fragment_popular_brands"
+        tools:layout="@layout/fragment_popular_brands" />
+
+</navigation>

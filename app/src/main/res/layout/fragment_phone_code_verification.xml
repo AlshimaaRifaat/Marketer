@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/phone_code_verification_Container"
+   android:background="@color/colorWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.CodeVerification.PhoneCodeVerificationFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mask_group1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <TextView
+                android:id="@+id/MobileVerification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="@string/MobileVerification"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                tools:layout_editor_absoluteY="43dp"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/montserrat_bold"/>
+
+            <TextView
+                android:id="@+id/digitCodeSent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:text="@string/FourDigitCode_is_Sent_to_your_Mobile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/MobileVerification"
+                android:textSize="@dimen/_9ssp"
+                android:fontFamily="@font/montserrat_regular"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@id/digitCodeSent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/tPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="+9745152816"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/colorLigtBlue"
+                android:fontFamily="@font/montserrat_regular"/>
+                <TextView
+                    android:id="@+id/tChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/Change"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    app:layout_constraintStart_toEndOf="@id/tPhone"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/colorLigtBlue"
+                    android:fontFamily="@font/montserrat_bold"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnValidate"
+                android:layout_width="@dimen/_157sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginStart="@dimen/_27sdp"
+                android:layout_marginEnd="@dimen/_27sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/btn_continue"
+                android:text="@string/Verify"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintTop_toBottomOf="@id/constraintPhone"
+                android:layout_marginTop="@dimen/_50sdp"
+                app:layout_constraintVertical_bias="0.542" />
+            <TextView
+                android:id="@+id/tExpire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="95:00 ResendCode"
+                android:textColor="@color/colorLigtBlue"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintTop_toBottomOf="@id/btnValidate"
+                />
+            <TextView
+                android:id="@+id/tResendCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Did_not_recieve_code_RESEND"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintTop_toBottomOf="@id/tExpire"
+                />
+            <View
+                android:layout_width="@dimen/_170sdp"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorRed"
+                app:layout_constraintTop_toBottomOf="@id/tResendCode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

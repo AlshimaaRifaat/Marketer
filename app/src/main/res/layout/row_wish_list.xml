@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app1="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app1:layout_constraintStart_toStartOf="parent"
+    app1:layout_constraintTop_toTopOf="parent"
+    android:layout_margin="@dimen/_5sdp"
+
+    android:layout_width="@dimen/_142sdp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/product_item_corner">
+
+
+
+    <ImageView
+        android:id="@+id/img_Product"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/suit"
+
+        />
+    <TextView
+        android:id="@+id/tProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textSize="@dimen/_11ssp"
+        android:text="Men's Modern fetch"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toBottomOf="@id/img_Product"/>
+
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tProductName"
+                android:background="@drawable/max"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+
+                />
+
+
+    <TextView
+        android:id="@+id/tNewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textSize="@dimen/_11ssp"
+        android:text="210 EGB"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toBottomOf="@id/tProductName"/>
+
+            <TextView
+                android:id="@+id/tOldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/_11ssp"
+                android:text="260 EGB"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintTop_toBottomOf="@id/tNewPrice"/>
+
+    <ImageView
+        android:id="@+id/imgSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/icons3"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

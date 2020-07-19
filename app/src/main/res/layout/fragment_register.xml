@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/register_container"
+    android:background="@color/colorWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Register.RegisterFragment">
+    <ProgressBar
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_50sdp"
+        android:id="@+id/progressBarRegister"
+        android:visibility="gone"
+        android:minWidth="@dimen/_50sdp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorRed" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mask_group1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+     <!--   <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_280sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/login_corner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/imageView">-->
+
+            <TextView
+                android:id="@+id/otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/CreateUsername"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                tools:layout_editor_absoluteY="43dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/montserrat_bold"/>
+
+            <TextView
+                android:id="@+id/letUsKnow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/Letusknowmoreaboutyou"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/otp"
+                tools:layout_editor_absoluteY="90dp" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintUserName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/letUsKnow"
+    android:layout_marginEnd="@dimen/_27sdp"
+    android:layout_marginStart="@dimen/_27sdp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="@dimen/_12sdp"
+    android:background="@drawable/et_password">
+            <EditText
+                android:id="@+id/etUserName"
+                android:layout_width="@dimen/_220sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:ems="10"
+                android:textSize="@dimen/_12ssp"
+                android:inputType="text"
+                android:gravity="center"
+                android:hint="@string/Create_your_own_username"
+                android:fontFamily="@font/montserrat_regular"/>
+    <ImageView
+        android:id="@+id/icUserNameValidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/etUserName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+           <!-- <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_27sdp"
+                android:layout_marginStart="@dimen/_27sdp"
+                android:width="@dimen/_120sdp"
+                android:background="@drawable/login_corner"
+                android:ems="10"
+                android:hint="@string/PleaseEnterYourName"
+                android:textSize="@dimen/_12ssp"
+                android:inputType="textPassword"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/letUsKnow"
+                android:layout_marginTop="@dimen/_12sdp"
+                />-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:id="@+id/constraintSpinner"
+                app:layout_constraintTop_toBottomOf="@id/constraintUserName"
+                android:orientation="horizontal"
+                android:layout_marginEnd="@dimen/_27sdp"
+                android:layout_marginStart="@dimen/_27sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/et_password">
+
+                <Spinner
+                    android:id="@+id/genderSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:layout_toEndOf="@+id/dddd"
+                    android:background="#FFF"
+                    android:gravity="center|start"
+                    android:textColor="#ffff"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/dddd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/dddd"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="8dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/next2"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnConfirmRegister"
+                android:layout_width="@dimen/_157sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginStart="@dimen/_27sdp"
+                android:layout_marginEnd="@dimen/_27sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/btn_continue"
+                android:text="@string/Continue"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintTop_toBottomOf="@id/constraintSpinner"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintVertical_bias="0.542"
+
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

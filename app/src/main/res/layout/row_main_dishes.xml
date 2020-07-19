@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app1="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app1:layout_constraintStart_toStartOf="parent"
+    app1:layout_constraintTop_toTopOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/_85sdp"
+    android:background="@color/colorWhite"
+    >
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorGrey02"
+
+       app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imgMainDishes"
+        android:layout_width="@dimen/_76sdp"
+        android:layout_height="@dimen/_72sdp"
+        app:layout_constraintStart_toStartOf="parent"
+       android:layout_marginTop="@dimen/_3sdp"
+        android:background="@drawable/rectangle"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        />
+    <TextView
+        android:id="@+id/tMainDishesName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chicken Burger"
+        android:textColor="@color/colorGrey07"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:layout_constraintStart_toEndOf="@id/imgMainDishes"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="@dimen/_12sdp" />
+    <ImageView
+        android:id="@+id/icWishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        android:src="@drawable/group1"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        />
+    <TextView
+        android:id="@+id/tMainDishesDesc"
+        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_210sdp"
+        android:text="Lorem ispum is simply dummy text of printing and"
+        android:textColor="@color/colorGrey07"
+        app:layout_constraintTop_toBottomOf="@id/tMainDishesName"
+        app:layout_constraintStart_toEndOf="@id/imgMainDishes"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_regular"
+        />
+    <ImageView
+        android:id="@+id/icRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/imgMainDishes"
+        app:layout_constraintTop_toBottomOf="@id/tMainDishesDesc"
+        android:src="@drawable/star1"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        />
+    <TextView
+        android:id="@+id/tRateNumbers"
+        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_210sdp"
+        android:text="(4.0) (233 ratings)"
+        android:textColor="@color/colorGrey07"
+        app:layout_constraintTop_toBottomOf="@id/tMainDishesDesc"
+        app:layout_constraintStart_toEndOf="@id/icRating"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_regular"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

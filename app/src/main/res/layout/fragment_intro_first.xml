@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ui.GettingStarted.IntroFirstFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/notificationAlertsImageView"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_swipe" />
+    <TextView
+        android:id="@+id/notificationAlertsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificationAlertsImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:text="Swip to Know More"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/montserrat_regular"/>
+</RelativeLayout>

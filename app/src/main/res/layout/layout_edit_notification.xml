@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_5sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/line_location"
+        android:layout_marginTop="@dimen/_9sdp"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgStore"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:background="@drawable/max_store"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintRemoveNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgStore"
+        android:layout_marginTop="@dimen/_10sdp">
+    <ImageView
+        android:id="@+id/icRemoveNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/cancel"
+        android:layout_marginStart="@dimen/_13sdp"
+
+        />
+    <TextView
+        android:id="@+id/tRemoveNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:text="Remove this notification"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icRemoveNotification"
+
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintRemoveNotification"
+        android:layout_marginTop="@dimen/_10sdp">
+        <ImageView
+            android:id="@+id/icTurnOffNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/cancel"
+            android:layout_marginStart="@dimen/_13sdp"
+
+            />
+        <TextView
+            android:id="@+id/tTurnOffNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="Turn off this Notification from max"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icTurnOffNotification"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
