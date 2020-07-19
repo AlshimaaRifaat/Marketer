@@ -70,7 +70,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
 
 
         productId = arguments?.getString("productId")
-        println("productId == " + productId)
+       // println("productId == " + productId)
 
         return root
     }
