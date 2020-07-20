@@ -523,12 +523,11 @@
         app:layout_constraintTop_toBottomOf="@+id/lineBattery"
         />
     <ImageView
-        android:id="@+id/icApple"
+        android:id="@+id/icStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:src="@drawable/ic_apple"
         app:layout_constraintEnd_toStartOf="@id/icArrowNext"
         app:layout_constraintTop_toBottomOf="@+id/lineBattery"
         />

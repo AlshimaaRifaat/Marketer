@@ -5,6 +5,7 @@ import com.example.themarketer.data.model.AddInterests.AddInterestsResponse
 import com.example.themarketer.data.model.AllSection.AllSectionResponse
 import com.example.themarketer.data.model.Interests.InterestsResponse
 import com.example.themarketer.data.model.AuthProfile.AuthProfileResponse
+import com.example.themarketer.data.model.ChangePassword.ChangePasswordResponse
 import com.example.themarketer.data.model.DeleteUserInterests.DeleteUserInterestsResponse
 import com.example.themarketer.data.model.EditProfile.EditProfileResponse
 import com.example.themarketer.data.model.LogOut.LogOutResponse
@@ -111,7 +112,7 @@ interface RetrofitService {
         @Field("new_password") new_password: String,
         @Field("new_password_confirmation") new_password_confirmation: String,
         @Header("Authorization")  auth:String
-    ): Single<Response<LoginResponse>>
+    ): Call<ChangePasswordResponse>
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("products/{product_id}")

@@ -130,11 +130,12 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
                         tProductOldPrice.setPaintFlags(tProductOldPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
                         tDescription.text=it.data.description
                         tDiscount.text=it.data.discount.toString()
-                        tCamera.text=it.data.camera
-                        tScreen.text=it.data.screen
-                        tMemory.text=it.data.memory
-                        tBattery.text=it.data.battery
-                        tSoldBy.text=it.data.store
+                        tCamera.text=it.data.camera.toString()
+                        tScreen.text=it.data.screen.toString()
+                        tMemory.text=it.data.memory.toString()
+                        tBattery.text=it.data.battery.toString()
+                       // tSoldBy.text=it.data.store
+                        icStore.loadImage(it.data.storeImage)
 
                         productSizeAdapter = ProductSizeAdapter(it.data.size,requireContext())
                         recyclerProductSize.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)

@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.themarketer.data.model.Interests.InterestsResponse
 import com.example.themarketer.data.model.ProductDetails.ProductDetailsResponse
-import com.example.themarketer.data.repository.InterestsRepository
 import com.example.themarketer.data.repository.ProducDetailsRepository
 import com.example.themarketer.utils.Progressive
 import io.reactivex.SingleObserver
