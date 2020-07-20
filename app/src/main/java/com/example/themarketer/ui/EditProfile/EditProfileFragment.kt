@@ -36,7 +36,7 @@ import kotlinx.android.synthetic.main.layout_change_password.view.*
  * A simple [Fragment] subclass.
  */
 class EditProfileFragment : Fragment(),Progressive,View.OnClickListener{
-    lateinit var navController: NavController
+   // lateinit var navController: NavController
     private val editProfileViewModelFactory = EditProfileViewModelFactory()
     private lateinit var editProfileViewModel: EditProfileViewModel
 
