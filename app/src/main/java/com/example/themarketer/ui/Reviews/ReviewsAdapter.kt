@@ -3,55 +3,51 @@ package com.example.themarketer.ui.Reviews
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themarketer.R
-import com.example.themarketer.ui.WishList.WishListAdapter
+import com.example.themarketer.data.model.ProductReviews.ProductReviewsData
+import com.example.themarketer.data.model.Reviews.ReviewsData
+import kotlinx.android.synthetic.main.row_reviews.view.*
 
-class ReviewsAdapter() : RecyclerView.Adapter<ReviewsAdapter.MainViewHolder>() {
-    // lateinit var mItemCLicked: ItemCLickedListener
+class ReviewsAdapter : ListAdapter<ReviewsData, ReviewsAdapter.MainViewHolder>(
+DiffCallback()
+) {
 
 
-    /*  class DiffCallback : DiffUtil.ItemCallback<CountryDetails>() {
-          override fun areItemsTheSame(oldItem: CountryDetails, newItem: CountryDetails): Boolean {
-              return oldItem.id == newItem.id
-          }
+    class DiffCallback : DiffUtil.ItemCallback<ReviewsData>() {
+        override fun areItemsTheSame(oldItem: ReviewsData, newItem: ReviewsData): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-          override fun areContentsTheSame(oldItem: CountryDetails, newItem: CountryDetails): Boolean {
-              return oldItem.id == newItem.id
-          }
+        override fun areContentsTheSame(oldItem: ReviewsData, newItem: ReviewsData): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-      }*/
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_reviews, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.row_reviews, parent, false)
         return MainViewHolder(
             view
         )
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        //  holder.bind(getItem(position))
-
-
-
-    }
-    /* fun setUpInterestsListener(itemCLicked: ItemCLickedListener){
-        mItemCLicked = itemCLicked
-    }*/
-    override fun getItemCount(): Int {
-        return 20
+        holder.bind(getItem(position))
     }
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        /* fun bind(countryDetails: CountryDetails) {
-             itemView.country.text = countryDetails.name
 
-         }*/
+        fun bind(reviewsData: ReviewsData) {
+            itemView.tReviewName.text = reviewsData.customerName
+            itemView.tReviewDescription.text=reviewsData.body
+            itemView.tRateReviewNumber.text="("+reviewsData.star+".0)"
+            itemView.ratingBarReview.rating=reviewsData.star.toFloat()
+
+        }
     }
 
-    /* interface ItemInterestsCLickedListener {
-           fun onInterestsItemClicked(countryDetails: CountryDetails)
-       }*/
 
 }

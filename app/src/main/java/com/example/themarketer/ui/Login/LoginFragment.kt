@@ -2,8 +2,6 @@ package com.example.themarketer.ui.Login
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -14,22 +12,16 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.themarketer.Language
 import com.example.themarketer.R
 import com.example.themarketer.ui.Interests.InterestsFragment
 import com.example.themarketer.ui.Register.CreateAccountFragment
 import com.example.themarketer.ui.Register.GenderSpinnerAdapter
-import com.example.themarketer.ui.SearchResult.SearchResultActivity
 import com.example.themarketer.utils.Progressive
-import com.example.themarketer.utils.goTo
 import com.example.themarketer.utils.toast
-import com.facebook.appevents.suggestedevents.ViewOnClickListener
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import kotlinx.android.synthetic.main.fragment_menu.view.*
-import kotlinx.android.synthetic.main.fragment_register.view.*
 
 
 /**
@@ -48,6 +40,11 @@ class LoginFragment : Fragment(), Progressive,View.OnClickListener {
     )
     var perfixPhone_SelectedItemSpinner: String? = null
     lateinit var popUpview:View
+
+        var strFullName: String?=null
+
+    private lateinit var sharedPrefFullName: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loginViewModel = ViewModelProvider(
@@ -65,15 +62,25 @@ class LoginFragment : Fragment(), Progressive,View.OnClickListener {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_login, container, false)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        sharedPrefFullName=PreferenceManager.getDefaultSharedPreferences(activity);
         getUserToken()
+       // getFullName()
         getPerfixPhoneCodeSpinnerItem()
-        root.btnContinueLogin.setOnClickListener { view -> initLoginViewModel() }
+        root.btnContinueLogin.setOnClickListener { view ->
+            //printErrorMessage()
+            initLoginViewModel()
+        }
 
 
 
 
         return root
     }
+
+    private fun getFullName() {
+        strFullName = sharedPreferences.getString("fullName", null)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view?.btnResetPassCode?.setOnClickListener(this)
@@ -146,27 +153,44 @@ class LoginFragment : Fragment(), Progressive,View.OnClickListener {
                 "Min password must be at least 6 Chrachter and  max 16 Charachter"
             etConfirmPassword.requestFocus()
         } else if (!mobileNumber.isEmpty() && !confirmPassword.isEmpty() && etConfirmPassword.length() >= 5 || etConfirmPassword.length() <= 16) {
+
             if (isConnected) {
 
                 loginViewModel.loadLogin(mobileNumber, confirmPassword, "0")
                     .observe(viewLifecycleOwner, Observer {
                         progressLogin.visibility = View.GONE
-                        if (it != null) {
+                        context?.toast(it.message)
+
+                        if (it.status == 1) {
                             context?.toast(it.message)
                             val customer_id = it.data.token
+                            val strFirstName = it.data.firstName
+                            val strLastName = it.data.lastName
+                            strFullName = strFirstName + " " + strLastName
+
                             sharedPreferences.edit().putString("token", customer_id).apply()
+                            sharedPrefFullName.edit().putString("fullName", strFullName).apply()
                             replaceFragment(InterestsFragment())
-
-                        }
+                        } /*else {
+                            printErrorMessage()
+                        }*/
                     })
-
-            } else {
-
+            }
+            else {
                 context?.toast(getResources().getString(R.string.No_network_availabe))
             }
+
         }
 
     }
+
+   /* fun printErrorMessage()
+    {
+        loginViewModel.errorLiveData.observe(viewLifecycleOwner, Observer
+        {
+            context?.toast(it)
+        })
+    }*/
 
     override fun onStarted() {
         progressLogin.visibility = View.VISIBLE

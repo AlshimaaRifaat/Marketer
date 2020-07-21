@@ -72,7 +72,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReviews"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_400sdp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
@@ -84,14 +84,23 @@
         tools:listitem="@layout/row_reviews"
         >
     </androidx.recyclerview.widget.RecyclerView>
-    <Button
+    <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/rvReviews"
+        />
+    <ProgressBar
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorRed"
-        android:layout_marginTop="@dimen/_11ssp"
-        android:text="@string/AddRate"
-        android:textAllCaps="true"
-
-        android:textColor="@color/colorWhite"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_50sdp"
+        android:id="@+id/progressReviews"
+        android:visibility="gone"
+        android:minWidth="@dimen/_50sdp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorRed"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

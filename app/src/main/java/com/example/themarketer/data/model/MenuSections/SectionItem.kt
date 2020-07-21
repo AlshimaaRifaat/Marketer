@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SectionItem(
     @SerializedName("battery")
-    var battery: Any,
+    var battery: String,
     @SerializedName("branches")
     var branches: String,
     @SerializedName("camera")
@@ -17,7 +17,7 @@ data class SectionItem(
     @SerializedName("description")
     var description: String,
     @SerializedName("discount")
-    var discount: Int,
+    var discount: Float,
     @SerializedName("fee")
     var fee: String,
     @SerializedName("id")

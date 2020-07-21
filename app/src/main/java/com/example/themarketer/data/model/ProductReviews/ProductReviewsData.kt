@@ -3,7 +3,7 @@ package com.example.themarketer.data.model.ProductReviews
 
 import com.google.gson.annotations.SerializedName
 
-data class ReviewsData(
+data class ProductReviewsData(
     @SerializedName("body")
     var body: String,
     @SerializedName("customer name")

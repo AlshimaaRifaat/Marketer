@@ -79,10 +79,11 @@
         app:layout_constraintTop_toBottomOf="@id/appbar"
         />
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/constraintImg"
+
         app:layout_constraintTop_toBottomOf="@id/viewAppBar">
     <ImageView
         android:id="@+id/imgProduct"
@@ -151,7 +152,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
         android:stepSize="1.0"
-        android:numStars="5"
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:progressTint="@color/colorRed"
         android:progressBackgroundTint="@color/colorGrey07"
@@ -282,9 +282,10 @@
         android:layout_marginStart="@dimen/_13sdp"
         android:layout_marginEnd="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_2sdp"
-        android:text="is simply Dummy text about the product dfghjk dfghjk sdfgh dfgh dfghjk "
+
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_10sdp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Description"
         android:fontFamily="@font/montserrat_regular"
@@ -581,7 +582,7 @@
         android:id="@+id/imgExcellent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:layout_marginStart="@dimen/_10sdp"
+       android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_23sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:text="12 MP"
@@ -764,7 +765,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lineReviews"
         android:fontFamily="@font/montserrat_regular"/>
-    <ImageView
+  <!--  <ImageView
         android:id="@+id/Rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -775,8 +776,21 @@
         android:layout_marginEnd="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_6sdp"
         android:fontFamily="@font/montserrat_regular"
-      />
-
+      />-->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:transformPivotX="@dimen/_180sdp"
+        android:transformPivotY="@dimen/_12sdp"
+        android:stepSize="1.0"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lineReviews"
+        android:layout_marginEnd="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        />
     <EditText
         android:id="@+id/etWriteRate"
         android:layout_width="match_parent"
@@ -795,7 +809,7 @@
         android:paddingTop="@dimen/_12sdp"
         />
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnAddRate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         app:layout_constraintBottom_toBottomOf="parent"

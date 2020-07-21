@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:ems="10"
                 android:textSize="@dimen/_12ssp"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:gravity="center"
                 android:fontFamily="@font/montserrat_regular"
                 android:hint="@string/Create_a_new_password"
@@ -129,7 +129,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:ems="10"
                 android:textSize="@dimen/_12ssp"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:gravity="center"
                 android:hint="@string/ConfirmPassword"
                 android:fontFamily="@font/montserrat_regular" />

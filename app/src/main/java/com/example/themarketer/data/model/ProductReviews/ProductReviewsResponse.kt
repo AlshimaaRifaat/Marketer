@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductReviewsResponse(
     @SerializedName("data")
-    var `data`: List<ReviewsData>,
+    var `data`: List<ProductReviewsData>,
     @SerializedName("message")
     var message: String,
     @SerializedName("status")

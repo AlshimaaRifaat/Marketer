@@ -2,6 +2,7 @@ package com.example.themarketer.api
 
 import com.example.themarketer.Constants
 import com.example.themarketer.data.model.AddInterests.AddInterestsResponse
+import com.example.themarketer.data.model.AddReview.AddReviewResponse
 import com.example.themarketer.data.model.AllSection.AllSectionResponse
 import com.example.themarketer.data.model.Interests.InterestsResponse
 import com.example.themarketer.data.model.AuthProfile.AuthProfileResponse
@@ -14,6 +15,7 @@ import com.example.themarketer.data.model.MenuSections.MenuSectionsResponse
 import com.example.themarketer.data.model.ProductDetails.ProductDetailsResponse
 import com.example.themarketer.data.model.Register.RegisterResponse
 import com.example.themarketer.data.model.ProductReviews.ProductReviewsResponse
+import com.example.themarketer.data.model.Reviews.ReviewsResponse
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Response
@@ -128,6 +130,22 @@ interface RetrofitService {
     @GET("sections/{section_id}")
     fun getAllSection(@Path(value = "section_id", encoded = true) section_id:String ,
                           @Header("Authorization")  auth:String): Single<Response<AllSectionResponse>>
+
+    @FormUrlEncoded
+    @POST("products/{product_id}/reviews")
+    fun addReview(
+        @Path(value = "product_id", encoded = true) product_id:String,
+        @Field("customer_name") customer_name: String,
+        @Field("body") body: String,
+        @Field("star") star: Int,
+        @Header("Authorization")  auth:String): Call<AddReviewResponse>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("products/{product_id}/reviews")
+    fun showReviews(
+        @Path(value = "product_id", encoded = true) product_id:String,
+        @Header("Authorization")  auth:String): Single<Response<ReviewsResponse>>
+
     companion object {
         fun getRetrofitInstance(): RetrofitService {
             val retrofit: Retrofit = Retrofit.Builder()

@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RatingBar
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +19,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themarketer.R
+import com.example.themarketer.ui.Login.LoginFragment
+import com.example.themarketer.ui.Login.LoginViewModel
+import com.example.themarketer.ui.Login.LoginViewModelFactory
 import com.example.themarketer.ui.ProductDetails.Color.ProductColorAdapter
 import com.example.themarketer.ui.ProductDetails.Reviews.ProductReviewsAdapter
 import com.example.themarketer.ui.ProductDetails.Reviews.ProductReviewsViewModel
@@ -26,6 +31,7 @@ import com.example.themarketer.utils.Progressive
 import com.example.themarketer.utils.loadImage
 import com.example.themarketer.utils.toast
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_product_details.*
 import kotlinx.android.synthetic.main.fragment_product_details.view.*
 
@@ -33,7 +39,7 @@ import kotlinx.android.synthetic.main.fragment_product_details.view.*
 /**
  * A simple [Fragment] subclass.
  */
-class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
+class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, RatingBar.OnRatingBarChangeListener{
     lateinit var navController: NavController
     lateinit var popUpview:View
     lateinit var root:View
@@ -51,16 +57,32 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
 
     val productReviewsAdapter = ProductReviewsAdapter()
     lateinit var productColorAdapter: ProductColorAdapter
+
+    private val addReviewViewModelFactory=ProducDetailsViewModelFactory()
+    private lateinit var addReviewViewModel: ProductDetailsViewModel
+    var rateCount: Int? = null
+    var strfullName: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
         getUserToken()
+        getFullName()
+
         productDetailsViewModel = ViewModelProvider(this,productDetailsViewModelFactory)
             .get(ProductDetailsViewModel::class.java)
         productReviewsViewModel = ViewModelProvider(this,productReviewsViewModelFactory)
             .get(ProductReviewsViewModel::class.java)
+
+        addReviewViewModel = ViewModelProvider(this,addReviewViewModelFactory)
+            .get(ProductDetailsViewModel::class.java)
         productDetailsViewModel.progressive = this
     }
+
+    private fun getFullName() {
+        strfullName = sharedPreferences.getString("fullName", null)
+        context?.toast("name stored "+strfullName.toString())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -85,10 +107,8 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
 
         view.findViewById<Button>(R.id.btnAddToCard).setOnClickListener(this)
         view.tSeeAllReviews.setOnClickListener(this)
-
-
-
-
+        view.btnAddRate.setOnClickListener(this)
+        view.ratingBar.onRatingBarChangeListener = this
         rvProductReviews.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         rvProductReviews.adapter = productReviewsAdapter
         initProductDetailsViewModel()
@@ -114,8 +134,6 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
         }
     private fun initProductDetailsViewModel() {
         if (isConnected) {
-
-
             productDetailsViewModel.loadProducDetails(productId.toString(),userToken.toString())
                 .observe(viewLifecycleOwner, Observer {
                     progressProductDetails.visibility = View.GONE
@@ -130,10 +148,12 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
                         tProductOldPrice.setPaintFlags(tProductOldPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
                         tDescription.text=it.data.description
                         tDiscount.text=it.data.discount.toString()
-                        tCamera.text=it.data.camera.toString()
-                        tScreen.text=it.data.screen.toString()
-                        tMemory.text=it.data.memory.toString()
-                        tBattery.text=it.data.battery.toString()
+                        if(it.data.camera!=null||it.data.screen!=null||it.data.memory!=null||it.data.battery!=null) {
+                            tCamera.text = it.data.camera
+                            tScreen.text = it.data.screen
+                            tMemory.text = it.data.memory
+                            tBattery.text = it.data.battery
+                        }
                        // tSoldBy.text=it.data.store
                         icStore.loadImage(it.data.storeImage)
 
@@ -158,19 +178,55 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.btnAddToCard -> navController!!.navigate(R.id.action_productDetailsFragment_to_myShoppingCartFragment)
-            R.id.tSeeAllReviews -> navController!!.navigate(R.id.action_productDetailsFragment_to_reviewsFragment)
-
+            R.id.tSeeAllReviews ->
+            {
+                val bundle = bundleOf(
+                    "product_id" to
+                            productId.toString()
+                )
+                navController!!.navigate(R.id.action_productDetailsFragment_to_reviewsFragment,bundle)
+            }
+            R.id.btnAddRate ->{initAddReviewViewModel()}
         }
     }
 
-  /*  private fun goToLayoutAddRate() {
-        val builder = android.app.AlertDialog.Builder(context).create()
-        popUpview = LayoutInflater.from(context).inflate(R.layout.layout_add_rate, null)
-        builder.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        builder.setView(popUpview)
-        // dialog.setCancelable(false);
-        builder.show()
-    }*/
+    private fun initAddReviewViewModel() {
+        val strRateBody = etWriteRate.text.toString().trim()
+
+
+        if (strRateBody.isEmpty()) {
+            etMobileNumber.error = "Phone required"
+            etMobileNumber.requestFocus()
+        }
+            else if (!strRateBody.isEmpty()) {
+            if (isConnected) {
+                rateCount=ratingBar.rating.toInt()
+                addReviewViewModel.loadAddReview(
+                    productId.toString(),
+                    strfullName.toString(), strRateBody,rateCount!!.toInt(),userToken.toString())
+                    .observe(viewLifecycleOwner, Observer {
+                        progressProductDetails.visibility = View.GONE
+
+                        if (it != null) {
+                            context?.toast(it.message)
+                        }
+                    })
+
+            } else {
+
+                context?.toast(getResources().getString(R.string.No_network_availabe))
+            }
+        }
+    }
+
+    /*  private fun goToLayoutAddRate() {
+          val builder = android.app.AlertDialog.Builder(context).create()
+          popUpview = LayoutInflater.from(context).inflate(R.layout.layout_add_rate, null)
+          builder.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+          builder.setView(popUpview)
+          // dialog.setCancelable(false);
+          builder.show()
+      }*/
 
     override fun onStarted() {
         progressProductDetails.visibility = View.VISIBLE
@@ -183,5 +239,10 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive{
     override fun onFailure(message: String) {
         progressProductDetails.visibility = View.GONE
         view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
+    }
+
+    override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+           //  context?.toast("rate "+"$p1")
+        this.rateCount=p1.toInt()
     }
 }

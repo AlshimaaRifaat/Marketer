@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class RateAsCategories(
     @SerializedName("Average")
-    var average: Int,
+    var average: Float,
     @SerializedName("Excellent")
-    var excellent: Int,
+    var excellent: Float,
     @SerializedName("Poor")
-    var poor: Int,
+    var poor: Float,
     @SerializedName("Terrible")
-    var terrible: Int,
+    var terrible: Float,
     @SerializedName("Very Good")
-    var veryGood: Int
+    var veryGood: Float
 )

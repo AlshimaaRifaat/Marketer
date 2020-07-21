@@ -23,10 +23,12 @@ companion object{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(this)
 
         userToken = sharedPreferences.getString("token", null);
         // name=sharedPreferences.getString("name",null);
+        println("token == " + userToken)
+
         handleGoTo()
 
     }

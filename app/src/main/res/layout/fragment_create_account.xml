@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:id="@+id/create_account_container"
-
     tools:context=".ui.Register.CreateAccountFragment">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mask_group1"/>
+    android:background="@drawable/mask_group1">
     <!-- TODO: Update blank fragment layout -->
     <ProgressBar
         app:layout_constraintTop_toTopOf="parent"
@@ -192,5 +191,5 @@
             app:layout_constraintVertical_bias="0.542"
 
             />
-
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

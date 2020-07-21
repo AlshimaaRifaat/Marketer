@@ -61,6 +61,7 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
 
     lateinit var UserToken: String
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
     companion object {
         var userFirstName: String?=null
         var userLastName:String?=null
@@ -293,6 +294,12 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
                 progressProfile.visibility = View.GONE
                 if (it != null) {
                     context?.toast(it.message)
+/*
+                    editor = sharedPreferences.edit()
+                    editor.remove("token")
+                    editor.clear()
+                    editor.apply()
+*/
                     sharedPreferences.edit().putString("token", null).apply()
 
                 }

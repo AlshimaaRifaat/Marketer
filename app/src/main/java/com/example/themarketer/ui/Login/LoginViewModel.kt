@@ -1,5 +1,6 @@
 package com.example.themarketer.ui.Login
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,9 @@ class LoginViewModel:ViewModel() {
     var disposable = CompositeDisposable()
     var progressive: Progressive? = null
 
+    val errorLiveData: MutableLiveData<String>by lazy {
+        MutableLiveData<String>()
+    }
     val loginLiveData: MutableLiveData<LoginResponse> by lazy {
         MutableLiveData<LoginResponse>()
     }
@@ -26,15 +30,22 @@ class LoginViewModel:ViewModel() {
        LoginRepository().login(phone,password,remember_me)
         .enqueue(object : Callback, retrofit2.Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                progressive?.onSuccess()
 
-                loginLiveData?.setValue(response.body()!!)
+             if(response.isSuccessful) {
+                 progressive?.onSuccess()
+                 loginLiveData?.setValue(response.body()!!)
+             }else
+             {
+                 progressive?.onFailure(response.message())
+
+
+             }
 
 
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-               // loginLiveData?.setValue()
+                errorLiveData?.setValue(t.toString())
 
             }
         })

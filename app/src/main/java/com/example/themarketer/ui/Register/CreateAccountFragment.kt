@@ -27,7 +27,7 @@ lateinit var root: View
         // Inflate the layout for this fragment
         root= inflater.inflate(R.layout.fragment_create_account, container, false)
 
-        root.btnSendPassCode.setOnClickListener { view -> replaceFragment(PhoneCodeVerificationFragment()) }
+        root.btnSendPassCode.setOnClickListener { v -> replaceFragment(PhoneCodeVerificationFragment()) }
         return root
     }
 
