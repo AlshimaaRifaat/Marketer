@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.themarketer.R
-import com.example.themarketer.data.model.MenuSections.SectionItem
+import com.example.themarketer.data.model.Menu.MenuSections.SectionItem
 
 class MenuChildSectionsAdapter (  childList: List<SectionItem>, type:String, context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     internal val VIEW_TYPE_ONE = 1
@@ -48,9 +48,10 @@ class MenuChildSectionsAdapter (  childList: List<SectionItem>, type:String, con
 
      if (designType .equals("1")) { // put your condition, according to your requirements
          childList?.get(position)?.let {(holder as TopMarketersViewHolder).bindTopMarketersItems(it) }
-
-
-
+         holder.itemView.setOnClickListener {view->
+             view.findNavController().navigate(R.id.action_menuFragment_to_topMarketersDetailsFragment)
+             //mItemProductCLicked.onItemProductClicked(childList!!.get(position).id)
+         }
      } else if(designType.equals("2")) {
 
          childList?.get(position)?.let {(holder as ProductsViewHolder).bindProductsItems(it) }
@@ -64,9 +65,10 @@ class MenuChildSectionsAdapter (  childList: List<SectionItem>, type:String, con
          }
      }else {
          childList?.get(position)?.let { (holder as MainViewHolder).bindItems(it) }
-
-
-
+         holder.itemView.setOnClickListener {view->
+             view.findNavController().navigate(R.id.action_menuFragment_to_popularBrandsDetailsFragment)
+             //mItemProductCLicked.onItemProductClicked(childList!!.get(position).id)
+         }
      }
  }
 

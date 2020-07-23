@@ -73,7 +73,6 @@ class PopularBrandsFragment : Fragment(),Progressive {
     }
 
     private fun initPopularBrandsViewModel() {
-        context?.toast(sectionId.toString())
         popularBrandsViewModel.loadAllPopularBrandSection(sectionId.toString(),userToken).observe(viewLifecycleOwner, Observer {
             popularBrandsAdapter.submitList(it.data.items)
 

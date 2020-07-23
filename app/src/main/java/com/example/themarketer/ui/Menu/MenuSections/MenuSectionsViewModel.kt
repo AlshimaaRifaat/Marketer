@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.themarketer.data.model.MenuSections.MenuSectionsResponse
+import com.example.themarketer.data.model.Menu.MenuSections.MenuSectionsResponse
 import com.example.themarketer.data.repository.MenuSectionsRepository
 import com.example.themarketer.utils.Progressive
 import io.reactivex.SingleObserver

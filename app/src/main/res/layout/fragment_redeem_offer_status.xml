@@ -81,14 +81,14 @@
         android:layout_marginStart="@dimen/_3sdp"
         android:text="Thank you!"
         android:textColor="@color/colorRed"
+        android:layout_marginTop="@dimen/_12sdp"
         android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/imageView"
         android:fontFamily="@font/montserrat_regular"/>
     <Button
         android:id="@+id/btnContinueShopping"
         android:layout_width="@dimen/_170sdp"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginStart="@dimen/_27sdp"
         android:layout_marginEnd="@dimen/_27sdp"
         android:background="@drawable/btn_continue"

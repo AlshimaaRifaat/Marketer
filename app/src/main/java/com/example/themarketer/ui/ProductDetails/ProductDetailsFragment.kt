@@ -80,7 +80,6 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
 
     private fun getFullName() {
         strfullName = sharedPreferences.getString("fullName", null)
-        context?.toast("name stored "+strfullName.toString())
     }
 
     override fun onCreateView(
@@ -105,10 +104,11 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        view.findViewById<Button>(R.id.btnAddToCard).setOnClickListener(this)
+        view.btn_redeeemOffer.setOnClickListener(this)
         view.tSeeAllReviews.setOnClickListener(this)
         view.btnAddRate.setOnClickListener(this)
         view.ratingBar.onRatingBarChangeListener = this
+
         rvProductReviews.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         rvProductReviews.adapter = productReviewsAdapter
         initProductDetailsViewModel()
@@ -155,7 +155,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
                             tBattery.text = it.data.battery
                         }
                        // tSoldBy.text=it.data.store
-                        icStore.loadImage(it.data.storeImage)
+                        //icStore.loadImage(it.data.storeImage)
 
                         productSizeAdapter = ProductSizeAdapter(it.data.size,requireContext())
                         recyclerProductSize.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
@@ -177,7 +177,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.btnAddToCard -> navController!!.navigate(R.id.action_productDetailsFragment_to_myShoppingCartFragment)
+            R.id.btn_redeeemOffer -> navController!!.navigate(R.id.action_productDetailsFragment_to_redeemOfferFragment)
             R.id.tSeeAllReviews ->
             {
                 val bundle = bundleOf(
@@ -198,7 +198,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
             etMobileNumber.error = "Phone required"
             etMobileNumber.requestFocus()
         }
-            else if (!strRateBody.isEmpty()) {
+            else if (!strRateBody.equals(null)) {
             if (isConnected) {
                 rateCount=ratingBar.rating.toInt()
                 addReviewViewModel.loadAddReview(

@@ -181,4 +181,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="Min_password_must_be_at_least_6_Chrachter">Min password must be at least 6 Chrachter and  max 16 Charachter</string>
     <string name="More">More</string>
+    <string name="Arabic">ع</string>
+    <string name="Redeeem">Redeeem</string>
 </resources>

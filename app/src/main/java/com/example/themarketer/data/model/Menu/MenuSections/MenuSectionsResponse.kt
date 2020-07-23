@@ -1,11 +1,11 @@
-package com.example.themarketer.data.model.ProductDetails
+package com.example.themarketer.data.model.Menu.MenuSections
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductDetailsResponse(
+data class MenuSectionsResponse(
     @SerializedName("data")
-    var `data`: ProductDetailsData,
+    var `data`: List<SectionsData>,
     @SerializedName("message")
     var message: String,
     @SerializedName("status")

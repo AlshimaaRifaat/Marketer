@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
     <solid
         android:color="@color/colorPrimary"
         />
@@ -7,10 +8,7 @@
         android:width="@dimen/_3sdp"
         android:color="@color/colorPrimary"
         />
-    <corners
-        android:bottomLeftRadius="@dimen/_50sdp"
-        android:bottomRightRadius="@dimen/_50sdp"
-        android:topLeftRadius="@dimen/_50sdp"
-        android:topRightRadius="@dimen/_50sdp"
-        />
+    <size
+        android:width="120dp"
+        android:height="120dp"/>
 </shape>

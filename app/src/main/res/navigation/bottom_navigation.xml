@@ -31,17 +31,19 @@
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.example.themarketer.ui.Notifications.NotificationsFragment"
+        android:name="com.example.themarketer.ui.Messages.MessagesFragment"
         android:label="fragment_message"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_messages" >
+        <action
+            android:id="@+id/action_messageFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.themarketer.ui.Menu.MenuSections.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
-        <action
-            android:id="@+id/action_menuFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
+
         <action
             android:id="@+id/action_menuFragment_to_topMarketersDetailsFragment"
             app:destination="@id/topMarketersDetailsFragment" />
@@ -72,11 +74,7 @@
         android:name="com.example.themarketer.ui.EditProfile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
-    <fragment
-        android:id="@+id/searchResultFragment"
-        android:name="com.example.themarketer.ui.SearchResult.SearchResultFragment"
-        android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result" />
+
     <fragment
         android:id="@+id/topMarketersDetailsFragment"
         android:name="com.example.themarketer.ui.TopMarketersDetails.TopMarketersDetailsFragment"
@@ -93,6 +91,9 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_reviewsFragment"
             app:destination="@id/reviewsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_redeemOfferFragment"
+            app:destination="@id/redeemOfferFragment" />
     </fragment>
     <fragment
         android:id="@+id/myShoppingCartFragment"
@@ -102,6 +103,9 @@
         <action
             android:id="@+id/action_myShoppingCartFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_myShoppingCartFragment_to_redeemOfferStatusFragment"
+            app:destination="@id/redeemOfferStatusFragment" />
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
@@ -147,5 +151,20 @@
         android:name="com.example.themarketer.ui.PopularBrands.PopularBrandsFragment"
         android:label="fragment_popular_brands"
         tools:layout="@layout/fragment_popular_brands" />
+    <fragment
+        android:id="@+id/redeemOfferFragment"
+        android:name="com.example.themarketer.ui.RedeemOffer.RedeemOfferFragment"
+        android:label="fragment_redeem_offer"
+        tools:layout="@layout/fragment_redeem_offer" />
+    <fragment
+        android:id="@+id/redeemOfferStatusFragment"
+        android:name="com.example.themarketer.ui.RedeemOfferStatus.RedeemOfferStatusFragment"
+        android:label="fragment_redeem_offer_status"
+        tools:layout="@layout/fragment_redeem_offer_status" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.themarketer.ui.Chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 
 </navigation>

@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgPopularBrand" />
     <TextView
         android:id="@+id/tTopMarketers"
-        android:layout_width="@dimen/_200sdp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lorem ispum dolor sit amit, consectuer adipscing alit"
         app:layout_constraintStart_toStartOf="parent"
@@ -149,6 +149,8 @@
         app:layout_constraintTop_toBottomOf="@id/icLocation"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_13sdp"
+        android:layout_marginEnd="@dimen/_13sdp"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_11sdp"/>
     <View

@@ -262,7 +262,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:textSize="@dimen/_11sdp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMenuTopMarketer"
+        android:id="@+id/rvParentProduct"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_250sdp"
         android:layout_marginTop="@dimen/_5sdp"
@@ -271,6 +271,6 @@
         android:layout_marginBottom="@dimen/_4sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        tools:listitem="@layout/row_main_dishes"
+        tools:listitem="@layout/row_child_product"
         ></androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

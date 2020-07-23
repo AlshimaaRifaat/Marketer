@@ -11,7 +11,8 @@ import com.example.themarketer.data.model.DeleteUserInterests.DeleteUserInterest
 import com.example.themarketer.data.model.EditProfile.EditProfileResponse
 import com.example.themarketer.data.model.LogOut.LogOutResponse
 import com.example.themarketer.data.model.Login.LoginResponse
-import com.example.themarketer.data.model.MenuSections.MenuSectionsResponse
+import com.example.themarketer.data.model.Menu.MenuSections.MenuSectionsResponse
+import com.example.themarketer.data.model.Menu.MenuSlider.MenuSliderResponse
 import com.example.themarketer.data.model.ProductDetails.ProductDetailsResponse
 import com.example.themarketer.data.model.Register.RegisterResponse
 import com.example.themarketer.data.model.ProductReviews.ProductReviewsResponse
@@ -145,6 +146,11 @@ interface RetrofitService {
     fun showReviews(
         @Path(value = "product_id", encoded = true) product_id:String,
         @Header("Authorization")  auth:String): Single<Response<ReviewsResponse>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("sliders")
+    fun showMenuSlider(
+        @Header("Authorization")  auth:String): Single<Response<MenuSliderResponse>>
 
     companion object {
         fun getRetrofitInstance(): RetrofitService {

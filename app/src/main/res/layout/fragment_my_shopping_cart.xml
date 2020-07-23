@@ -204,12 +204,13 @@
         android:fontFamily="@font/montserrat_regular"
         />
     <Button
+        android:id="@+id/btnRedeem"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/colorRed"
         android:layout_marginTop="@dimen/_11ssp"
-        android:text="@string/CheckOut"
+        android:text="@string/Redeeem"
         android:textAllCaps="true"
         android:textColor="@color/colorWhite"
         app:layout_constraintTop_toBottomOf="@id/Total"

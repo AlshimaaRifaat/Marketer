@@ -69,7 +69,6 @@ class TopMarketersFragment : Fragment(),Progressive {
     }
 
     private fun initTopMarketersViewModel() {
-        context?.toast(sectionId.toString())
         topMarketersViewModel.loadAllTopMarketersSection(sectionId.toString(),userToken).observe(viewLifecycleOwner, Observer {
             topMarketersAdapter.submitList(it.data.items)
 

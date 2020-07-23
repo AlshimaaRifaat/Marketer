@@ -1,5 +1,6 @@
 package com.example.themarketer.ui.Menu.MenuSections
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -14,11 +15,14 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themarketer.Language
 import com.example.themarketer.R
-import com.example.themarketer.data.model.MenuSections.SectionsData
+import com.example.themarketer.data.model.Menu.MenuSections.SectionsData
+import com.example.themarketer.ui.SearchResult.SearchResultActivity
 import com.example.themarketer.utils.Progressive
+import com.example.themarketer.utils.goTo
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_menu.view.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -37,7 +41,7 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
 
     private lateinit var parentList: MutableList<SectionsData>
    // private lateinit var childList: MutableList<SectionItem>
-
+   private var mContext: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -84,21 +88,31 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
 
     private fun initMenuSectionsViewModel() {
         menuSectionsViewModel.loadMenuSections(userToken).observe(requireActivity(), Observer {
-
+        if(it!=null) {
             parentList.addAll(it.data)
-            menuParentSectionsAdapter = MenuParentSectionsAdapter(parentList, requireContext())
+            menuParentSectionsAdapter =
+                context?.let { it1 -> MenuParentSectionsAdapter(parentList, it1) }!!
             rvParentSections.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             rvParentSections.adapter = menuParentSectionsAdapter
+        }
         })
-
-
     }
 
+ /*   fun onAttach(context: Context) {
+        super.onAttach(this)
+        mContext = context
+    }
 
+    override fun onDetach() {
+        super.onDetach()
+        mContext = null
+    }*/
     override fun onClick(v: View?) {
         when(v!!.id){
-           R.id.imgMenuGoSearch -> navController!!.navigate(R.id.action_menuFragment_to_searchResultFragment)
+           R.id.imgMenuGoSearch -> {
+               context?.goTo(SearchResultActivity())
+           }
 
 
 

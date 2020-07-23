@@ -9,8 +9,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themarketer.R
-import com.example.themarketer.data.model.MenuSections.SectionItem
-import com.example.themarketer.data.model.MenuSections.SectionsData
+import com.example.themarketer.data.model.Menu.MenuSections.SectionItem
+import com.example.themarketer.data.model.Menu.MenuSections.SectionsData
 import kotlinx.android.synthetic.main.row_menu_parent_sections.view.*
 
 class MenuParentSectionsAdapter(var parentList: List<SectionsData>, private var context: Context):

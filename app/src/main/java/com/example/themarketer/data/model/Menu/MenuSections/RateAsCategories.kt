@@ -1,4 +1,4 @@
-package com.example.themarketer.data.model.MenuSections
+package com.example.themarketer.data.model.Menu.MenuSections
 
 
 import com.google.gson.annotations.SerializedName
