@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_77sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="@dimen/_44sdp"
+        android:layout_height="@dimen/_44sdp"
+        android:layout_gravity="top|right"
+        android:background="@drawable/no_path_copy"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    <TextView
+        android:id="@+id/tName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:text="Max"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/montserrat_bold"/>
+    <TextView
+        android:id="@+id/tTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 hours ago"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:textSize="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:fontFamily="@font/montserrat_regular"
+        />
+
+    <TextView
+        android:id="@+id/tDesc"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:text="lorem espirimsdfghjkl fghjk derfgthj erty defrg fgh"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tName"
+        android:fontFamily="@font/montserrat_regular"/>
+
+    <ImageView
+        android:id="@+id/icArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:text="Today 4:12pm"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/next3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+    <TextView
+         android:id="@+id/tMsgNumbers"
+         android:layout_width="@dimen/_20sdp"
+         android:layout_height="@dimen/_20sdp"
+         android:background="@drawable/colored_textview_circle"
+         android:gravity="center"
+         android:padding="@dimen/_2sdp"
+         android:text="1"
+         android:textColor="#fff"
+         android:textSize="@dimen/_13sdp"
+         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/icArrow"
+        android:layout_marginEnd="@dimen/_7sdp"
+         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_9sdp"
+         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorGrey02"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
