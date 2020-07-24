@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_profileFragment_to_myStatusFragment"
             app:destination="@id/myStatusFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
 
 
     </fragment>
@@ -166,5 +169,10 @@
         android:name="com.example.themarketer.ui.Chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.themarketer.ui.Notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
 
 </navigation>

@@ -122,6 +122,7 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
         view.constraintMyProfile.setOnClickListener(this)
         view.constraintMyWishlist.setOnClickListener(this)
         view.constraintFavorites.setOnClickListener(this)
+        view.icNotification.setOnClickListener(this)
         if(Language.isRTL())
         {
             view.icArrowMyStatus.setImageResource(R.drawable.nexxt) // Drawabl)
@@ -162,8 +163,8 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
     private fun initAuthProfileViewModel() {
 
         authProfileViewModel.loadAuthProfile(UserToken)
-            .observe(requireActivity(), Observer {
-                progressProfile.visibility = View.GONE
+            .observe(viewLifecycleOwner, Observer {
+                view?.progressProfile?.visibility = View.GONE
                 if (it != null) {
                     userFirstName=it.data.firstName
                     userLastName=it.data.lastName
@@ -190,6 +191,7 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
             R.id.constraintMyProfile-> navController!!.navigate(R.id.action_profileFragment_to_editProfileFragment)
             R.id.constraintFavorites -> navController!!.navigate(R.id.action_profileFragment_to_editFavoritesFragment)
             R.id.constraintMyWishlist -> navController!!.navigate(R.id.action_profileFragment_to_wishlistFragment)
+            R.id.icNotification->navController!!.navigate(R.id.action_profileFragment_to_notificationsFragment)
             R.id.btnLogOut-> {
                 initLogOutViewModel()
                 context?.goTo(GettingStartedActivity())}
@@ -308,16 +310,16 @@ class ProfileFragment : Fragment(),View.OnClickListener,Progressive {
     }
 
     override fun onStarted() {
-        progressProfile.visibility = View.VISIBLE
+        view?.progressProfile?.visibility = View.VISIBLE
 
     }
 
     override fun onSuccess() {
-        progressProfile.visibility = View.GONE
+        view?.progressProfile?.visibility = View.GONE
     }
 
     override fun onFailure(message: String) {
-        progressProfile.visibility = View.GONE
+        view?.progressProfile?.visibility = View.GONE
         view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 

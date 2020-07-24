@@ -19,6 +19,7 @@ import com.example.themarketer.data.model.Menu.MenuSections.SectionsData
 import com.example.themarketer.ui.SearchResult.SearchResultActivity
 import com.example.themarketer.utils.Progressive
 import com.example.themarketer.utils.goTo
+import com.example.themarketer.utils.toast
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_menu.view.*
@@ -87,14 +88,14 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
     }
 
     private fun initMenuSectionsViewModel() {
-        menuSectionsViewModel.loadMenuSections(userToken).observe(requireActivity(), Observer {
+        menuSectionsViewModel.loadMenuSections(userToken).observe(viewLifecycleOwner, Observer {
         if(it!=null) {
             parentList.addAll(it.data)
-            menuParentSectionsAdapter =
-                context?.let { it1 -> MenuParentSectionsAdapter(parentList, it1) }!!
-            rvParentSections.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-            rvParentSections.adapter = menuParentSectionsAdapter
+            context?.toast(parentList.size.toString())
+           menuParentSectionsAdapter = MenuParentSectionsAdapter(parentList, requireContext())
+           view?.rvParentSections?.layoutManager =
+               LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+           view?.rvParentSections?.adapter = menuParentSectionsAdapter
         }
         })
     }
@@ -119,15 +120,15 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
         }
     }
     override fun onStarted() {
-        progressMenu.visibility = View.VISIBLE
+        view?.progressMenu?.visibility = View.VISIBLE
     }
 
     override fun onSuccess() {
-        progressMenu.visibility = View.GONE
+        view?.progressMenu?.visibility = View.GONE
     }
 
     override fun onFailure(message: String) {
-        progressMenu.visibility = View.GONE
+        view?.progressMenu?.visibility = View.GONE
         view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 
