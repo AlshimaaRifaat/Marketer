@@ -41,7 +41,7 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
     lateinit var menuParentSectionsAdapter: MenuParentSectionsAdapter
 
     private lateinit var parentList: MutableList<SectionsData>
-   // private lateinit var childList: MutableList<SectionItem>
+   /* private lateinit var childList: MutableList<SectionItem>*/
    private var mContext: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
