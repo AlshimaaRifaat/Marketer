@@ -9,6 +9,7 @@ import com.example.themarketer.data.model.AuthProfile.AuthProfileResponse
 import com.example.themarketer.data.model.ChangePassword.ChangePasswordResponse
 import com.example.themarketer.data.model.DeleteUserInterests.DeleteUserInterestsResponse
 import com.example.themarketer.data.model.EditProfile.EditProfileResponse
+import com.example.themarketer.data.model.FavoriteUserCategories.FavoriteUserCategoriesResponse
 import com.example.themarketer.data.model.LogOut.LogOutResponse
 import com.example.themarketer.data.model.Login.LoginResponse
 import com.example.themarketer.data.model.Menu.MenuSections.MenuSectionsResponse
@@ -152,6 +153,12 @@ interface RetrofitService {
     fun showMenuSlider(
         @Header("Authorization")  auth:String): Single<Response<MenuSliderResponse>>
 
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("users/categories")
+    fun showFavoriteUserCategories(
+        @Header("Authorization")  auth:String
+
+    ): Single<Response<FavoriteUserCategoriesResponse>>
     companion object {
         fun getRetrofitInstance(): RetrofitService {
             val retrofit: Retrofit = Retrofit.Builder()

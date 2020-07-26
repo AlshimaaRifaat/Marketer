@@ -12,7 +12,7 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp">
         <ImageView
-            android:id="@+id/icCategory"
+            android:id="@+id/icUserCategory"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/icons12_gift"
@@ -21,21 +21,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             />
         <TextView
-            android:id="@+id/tCategoryName"
+            android:id="@+id/tUserCategoryName"
             android:layout_width="@dimen/_190sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_6sdp"
-            android:text="Food"
+
             android:textSize="@dimen/_12ssp"
             android:textColor="@color/colorBlack"
             android:fontFamily="@font/montserrat_regular"
-            app:layout_constraintStart_toEndOf="@id/icCategory"
+            app:layout_constraintStart_toEndOf="@id/icUserCategory"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
 
             />
         <ImageView
-            android:id="@+id/icCancelCategory"
+            android:id="@+id/icUserCancelCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"

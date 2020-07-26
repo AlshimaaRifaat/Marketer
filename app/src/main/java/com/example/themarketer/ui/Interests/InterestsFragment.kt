@@ -85,8 +85,8 @@ class InterestsFragment : Fragment() , Progressive,View.OnClickListener {
        /* if(!name.equals(null)) {
             tWelcomeName.setText(name).toString()
         }*/
-        rvInterests.layoutManager = GridLayoutManager(context, 3)
-        rvInterests.adapter = adapter
+        view.rvInterests.layoutManager = GridLayoutManager(context, 3)
+        view.rvInterests.adapter = adapter
         initInterestsViewModel()
 
         view.btnContinue.setOnClickListener(this)
@@ -113,7 +113,7 @@ class InterestsFragment : Fragment() , Progressive,View.OnClickListener {
                    selectedCategoryIdList.add(interestsData.id)
               // }
 
-                context?.toast(interestsData.id.toString())
+                context?.toast("id "+interestsData.id.toString())
                 interestsViewModel.loadDeleteUserInterests(interestsData.id.toString(),userToken).observe(requireActivity(), Observer {
                     context?.toast(it.message)
                     initInterestsViewModel()
@@ -138,15 +138,15 @@ class InterestsFragment : Fragment() , Progressive,View.OnClickListener {
     }
 
     override fun onStarted() {
-        progressInterests.visibility = View.VISIBLE
+        view?.progressInterests?.visibility = View.VISIBLE
     }
 
     override fun onSuccess() {
-        progressInterests.visibility = View.GONE
+        view?.progressInterests?.visibility = View.GONE
     }
 
     override fun onFailure(message: String) {
-        progressInterests.visibility = View.GONE
+        view?.progressInterests?.visibility = View.GONE
         view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 

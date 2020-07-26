@@ -52,16 +52,16 @@ class InterestsAdapter (interestsList: ArrayList<InterestsData>, context: Contex
         val context = holder.itemView.context
         holder.itemView.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.product_item_corner))
        holder.itemView.setOnClickListener {
-            mItemCLicked.let {
-                mItemCLicked.onItemClicked(getItem(position))
-              holder.itemView.constraintItemInterest.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.group4833))
+          //  mItemCLicked.let {
+                //mItemCLicked.onItemClicked(getItem(position))
+             holder.itemView.constraintItemInterest.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.group4833))
 
                    // mItemDeleteCLicked.onItemDeleteClicked(interestsList!!.get(position),position)
                     interestsList.remove(getItem(position))
-                    notifyDataSetChanged()
+           notifyItemRemoved(position);
+           notifyItemRangeChanged(position, interestsList.size);
 
-
-            }
+           // }
 
          /*  holder.itemView.setOnClickListener {
                mItemDeleteCLicked.let {

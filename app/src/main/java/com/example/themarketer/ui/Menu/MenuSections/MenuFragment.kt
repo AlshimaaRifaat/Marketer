@@ -3,6 +3,7 @@ package com.example.themarketer.ui.Menu.MenuSections
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themarketer.Language
 import com.example.themarketer.R
 import com.example.themarketer.data.model.Menu.MenuSections.SectionsData
+import com.example.themarketer.data.model.Menu.MenuSlider.MenuSliderData
+import com.example.themarketer.ui.Menu.MenuSlider.MenuSliderAdapter
 import com.example.themarketer.ui.SearchResult.SearchResultActivity
 import com.example.themarketer.utils.Progressive
 import com.example.themarketer.utils.goTo
@@ -23,6 +26,7 @@ import com.example.themarketer.utils.toast
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_menu.view.*
+import java.util.*
 
 
 /**
@@ -42,7 +46,23 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
 
     private lateinit var parentList: MutableList<SectionsData>
    /* private lateinit var childList: MutableList<SectionItem>*/
+
+    private val menuSliderViewModelFactory = MenuSectionsViewModelFactory()
+    private lateinit var menuSliderViewModel: MenuSectionsViewModel
    private var mContext: Context? = null
+
+    lateinit var root:View
+    var swipeTimer: Timer?=null
+    val handler = Handler()
+    val Update = Runnable {
+        if (currentPage == NUM_PAGES) {
+            currentPage = 0
+        }
+        root.viewPagerSlider!!.setCurrentItem(currentPage++, true)
+    }
+    private var CartNumber = 0
+    private var currentPage = 0
+    private var NUM_PAGES = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -53,6 +73,10 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
             menuSectionsViewModelFactory
         ).get(MenuSectionsViewModel::class.java)
 
+        menuSliderViewModel = ViewModelProvider(
+            requireActivity(),
+            menuSliderViewModelFactory
+        ).get(MenuSectionsViewModel::class.java)
         menuSectionsViewModel.progressive = this
     }
 
@@ -65,7 +89,8 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false)
+        root= inflater.inflate(R.layout.fragment_menu, container, false)
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,7 +99,7 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
 
 
         view.imgMenuGoSearch.setOnClickListener(this)
-        initMenuSectionsViewModel()
+
 
         if (Language.isRTL()) {
             view.imgMenuGoSearch.setImageResource(R.drawable.rectangle_menu_left)
@@ -84,14 +109,37 @@ class MenuFragment : Fragment() ,View.OnClickListener, Progressive {
             view.imgMenuGoSearch.setImageResource(R.drawable.rectangle17572)
 
         }
+        initMenuSectionsViewModel()
+        initMenuSliderViewModel()
+    }
 
+    private fun initMenuSliderViewModel() {
+        menuSectionsViewModel.loadMenuSlider(userToken).observe(viewLifecycleOwner, Observer {
+            if(it!=null) {
+                viewPagerSlider!!.adapter = this.context?.let { it1 ->
+                    MenuSliderAdapter(
+                        it1,
+                        it.data as ArrayList<MenuSliderData>
+                    )
+                }
+
+                root.viewPagerCircleIndicator.setViewPager(viewPagerSlider)
+                NUM_PAGES = it.data.size
+                swipeTimer = Timer()
+                swipeTimer!!.schedule(object : TimerTask() {
+                    override fun run() {
+                        handler.post(Update)
+                    }
+                }, 3000, 3000)
+            }
+        })
     }
 
     private fun initMenuSectionsViewModel() {
         menuSectionsViewModel.loadMenuSections(userToken).observe(viewLifecycleOwner, Observer {
         if(it!=null) {
             parentList.addAll(it.data)
-            context?.toast(parentList.size.toString())
+
            menuParentSectionsAdapter = MenuParentSectionsAdapter(parentList, requireContext())
            view?.rvParentSections?.layoutManager =
                LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)

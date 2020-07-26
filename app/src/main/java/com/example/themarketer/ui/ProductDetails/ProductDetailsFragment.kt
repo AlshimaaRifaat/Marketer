@@ -34,6 +34,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_product_details.*
 import kotlinx.android.synthetic.main.fragment_product_details.view.*
+import kotlinx.android.synthetic.main.layout_change_password.view.*
 
 
 /**
@@ -62,6 +63,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
     private lateinit var addReviewViewModel: ProductDetailsViewModel
     var rateCount: Int? = null
     var strfullName: String? = null
+    private var isFavorite:Boolean?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -141,13 +143,22 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
                     if (it != null)
                     {
                         imgProduct.loadImage(it.data.image)
-                        tDiscount.text=it.data.discount.toString()+"%"
-                        tProductName.text = it.data.name
-                        tProductNewPrice.text=it.data.price.get(0).priceAfterDiccount.toString()+" QAR"
-                        tProductOldPrice.text=it.data.price.get(0).price.toString()+" QAR"
-                        tProductOldPrice.setPaintFlags(tProductOldPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
-                        tDescription.text=it.data.description
-                        tDiscount.text=it.data.discount.toString()
+                        isFavorite=it.data.isFavourite
+                        if(isFavorite==false) {
+                            view?.icIsFavorite?.setImageResource(R.drawable.group1)
+                        }else
+                        {
+                            view?.icIsFavorite?.setImageResource(R.drawable.icons8_like)
+                        }
+                        view?.tDiscount?.text=it.data.discount.toString()+"%"
+                        view?.tProductName?.text = it.data.name
+                        view?.tProductNewPrice?.text=it.data.price.get(0).priceAfterDiccount.toString()+" QAR"
+                        view?.tProductOldPrice?.text=it.data.price.get(0).price.toString()+" QAR"
+                        view?.tProductOldPrice?.setPaintFlags(tProductOldPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
+                        view?.tProductsNumberInStock?.text=it.data.inStock+" in stock"
+                        view?.tDeliveredDate?.text="Delivered by "+it.data.orderDeliveredDate
+                        view?.tDescription?.text=it.data.description
+                        view?.tDiscount?.text=it.data.discount.toString()
                         if(it.data.camera!=null||it.data.screen!=null||it.data.memory!=null||it.data.battery!=null) {
                             tCamera.text = it.data.camera
                             tScreen.text = it.data.screen
@@ -155,15 +166,15 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
                             tBattery.text = it.data.battery
                         }
                        // tSoldBy.text=it.data.store
-                        //icStore.loadImage(it.data.storeImage)
+                       // view?.icStore?.loadImage(it.data.storeImage)
 
                         productSizeAdapter = ProductSizeAdapter(it.data.size,requireContext())
-                        recyclerProductSize.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-                        recyclerProductSize.adapter = productSizeAdapter
+                        view?.recyclerProductSize?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        view?.recyclerProductSize?.adapter = productSizeAdapter
 
                         productColorAdapter = ProductColorAdapter(it.data.color,requireContext())
-                        recyclerProductColor.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-                        recyclerProductColor.adapter = productColorAdapter
+                        view?.recyclerProductColor?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        view?.recyclerProductColor?.adapter = productColorAdapter
 
 
                     }
@@ -205,7 +216,7 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
                     productId.toString(),
                     strfullName.toString(), strRateBody,rateCount!!.toInt(),userToken.toString())
                     .observe(viewLifecycleOwner, Observer {
-                        progressProductDetails.visibility = View.GONE
+                        view?.progressProductDetails?.visibility = View.GONE
 
                         if (it != null) {
                             context?.toast(it.message)
@@ -229,15 +240,15 @@ class ProductDetailsFragment : Fragment() ,View.OnClickListener,Progressive, Rat
       }*/
 
     override fun onStarted() {
-        progressProductDetails.visibility = View.VISIBLE
+        view?.progressProductDetails?.visibility = View.VISIBLE
     }
 
     override fun onSuccess() {
-        progressProductDetails.visibility = View.GONE
+        view?.progressProductDetails?.visibility = View.GONE
     }
 
     override fun onFailure(message: String) {
-        progressProductDetails.visibility = View.GONE
+        view?.progressProductDetails?.visibility = View.GONE
         view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 

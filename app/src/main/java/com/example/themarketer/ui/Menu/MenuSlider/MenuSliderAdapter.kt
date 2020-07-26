@@ -1,52 +1,59 @@
 package com.example.themarketer.ui.Menu.MenuSlider
 
+import android.content.Context
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.PagerAdapter
+import com.bumptech.glide.Glide
 import com.example.themarketer.R
 import com.example.themarketer.data.model.Menu.MenuSlider.MenuSliderData
 import com.example.themarketer.data.model.Reviews.ReviewsData
 import com.example.themarketer.ui.Reviews.ReviewsAdapter
 import kotlinx.android.synthetic.main.row_reviews.view.*
 
-class MenuSliderAdapter : ListAdapter<MenuSliderData, MenuSliderAdapter.MainViewHolder>(
-    DiffCallback()
-) {
+class MenuSliderAdapter (private val context: Context, private val imageModelArrayList: ArrayList<MenuSliderData>) : PagerAdapter() {
+    private val inflater: LayoutInflater
 
 
-    class DiffCallback : DiffUtil.ItemCallback<MenuSliderData>() {
-        override fun areItemsTheSame(oldItem: MenuSliderData, newItem: MenuSliderData): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: MenuSliderData, newItem: MenuSliderData): Boolean {
-            return oldItem.id == newItem.id
-        }
-
+    init {
+        inflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.row_menu_slider, parent, false)
-        return MainViewHolder(
-            view
-        )
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(`object` as View)
     }
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun getCount(): Int {
+        return imageModelArrayList.size
     }
 
-    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun instantiateItem(view: ViewGroup, position: Int): Any {
+        val imageLayout = inflater.inflate(R.layout.row_menu_slider, view, false)!!
 
-        fun bind(menuSliderData: MenuSliderData) {
+        val imgSlider = imageLayout
+            .findViewById(R.id.imgSlider) as ImageView
 
 
+        Glide.with(context).load(imageModelArrayList.get(position).image).into(imgSlider)
+        view.addView(imageLayout, 0)
 
-        }
+        return imageLayout
     }
 
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+        return view == `object`
+    }
+
+    override fun restoreState(state: Parcelable?, loader: ClassLoader?) {}
+
+    override fun saveState(): Parcelable? {
+        return null
+    }
 
 }
